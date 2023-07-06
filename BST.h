@@ -55,8 +55,23 @@ bool searchIterative(Node* node, int x);
 
 int FindHeight(Node* node);
 
+// Function to check if the tree is balanced or not 
+// using a helper function aswell
+int BalancedCheckHelper(Node* node);
+bool BalancedCheck(Node* node);
+
+//Function to check if the tree is a binary search tree
+// return type is a boolean
+//need a helper funciton 
+
+bool isBSThelper(Node* node, int min, int max);
+
+bool isBST(Node* node);
 
 
 };
+
+
+
 
 #endif

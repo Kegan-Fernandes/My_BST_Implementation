@@ -4,8 +4,6 @@
 #include <queue>
 #include <string> 
 /*TO DO:
-FIND HEIGHT 
-CHECK IF IT IS BALANCED 
 CHECK IF IT IS A BINARY SEARCH TREE
 */
 
@@ -17,11 +15,13 @@ int main() {
   bool srch = false;
 
   do {
-   std::cout << "Enter 1 to insert" << std::endl;
-   std::cout << "Enter 2 to print" << std::endl;
-   std::cout << "Enter 3 to see if a specific value is in the tree already" << std::endl;
+   std::cout << "Enter 1 to inser a value in to the Binary Search Tree" << std::endl;
+   std::cout << "Enter 2 to print out the nodes in the Binary Search Tree" << std::endl;
+   std::cout << "Enter 3 to see if a specific value is in the Binary Search Treea already" << std::endl;
    std::cout << "Enter 4 to find the height of the Binary Search Tree" << std::endl;
-   std::cout << "Enter 0 to quit" << std::endl;
+   std::cout << "Enter 5 to check if the Binary Search Tree is balanced " << std::endl;
+   std::cout << "Enter 6 to chekc if the tree is a valid Binary Search Tree" << std::endl;
+   std::cout << "Enter 0 to quit" << std::endl; 
 
     std::cin >> option;
     //Node n1;
@@ -41,7 +41,6 @@ int main() {
          std::cout<<std::endl;
     		break;
       
- 
     case 2:
    
       std::cout << "Pre-order recursively" << std::endl;
@@ -95,8 +94,30 @@ int main() {
     case 4: 
     std::cout << "Finding Height...." << std::endl;
     std::cout << "The height of the tree is " << obj.FindHeight(obj.root) << std::endl;
+    break;
+    case 5: 
+    std::cout << "Checking to see if the tree is balanced...." << std::endl;
+    if(obj.BalancedCheck(obj.root) == true)
+    {
+        std::cout << "The Binary Search Tree is Balanced!." << std::endl;
+    }
+    else
+    std::cout << "The Binary Search Tree is not Balanced!." << std::endl;
+    break;
+
+    case 6:
+    std::cout <<"Checking to see if the tree is a valid Binary Search Tree...." << std::endl;
+    if(obj.isBST(obj.root))
+    {
+        std::cout << "It is Valid!" << std::endl;
+    }
+    else
+    std::cout << "It is Valid!" << std::endl;
+
+
     }
     
+
 
 
 

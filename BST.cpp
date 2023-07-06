@@ -10,6 +10,7 @@ void BST::insert(Node* nodeTOadd)
         if(root == NULL)
         {
             root = nodeTOadd;
+            std::cout << "The node has been added!" << std::endl;
         }
         else{
             Node* temp = root; 
@@ -27,7 +28,7 @@ void BST::insert(Node* nodeTOadd)
                     std::cout << "The node has been added!" << std::endl;
                     break;
                 }
-                else if(nodeTOadd->value < root->value)
+                else if(nodeTOadd->value < temp->value)
                 {
                     temp = temp->left;
                 }
@@ -297,3 +298,64 @@ int BST::FindHeight(Node* node)
 
     return (std::max(Lheight, Rheight) + 1);
 }
+
+int BST::BalancedCheckHelper(Node* node)
+{
+
+    if (node == NULL)
+    {
+        return 0;
+    }
+
+    int Lheight = BalancedCheckHelper(node->left);
+    int Rheight = BalancedCheckHelper(node->right);
+
+    if(Lheight == -1 || Rheight == -1)
+    {
+        return -1;
+    }
+
+    if(std::abs((Lheight - Rheight)) > 1)
+    {
+        return -1;
+    }
+
+    return (std::max(Lheight, Rheight) + 1);
+} 
+
+bool BST::BalancedCheck(Node* node)
+{
+    if(BalancedCheckHelper(node) != -1)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+bool BST::isBSThelper(Node* node, int min, int max)
+{
+    if (node == NULL)
+    {
+        return true;
+    }
+
+    if(node->value > min && node->value < max && isBSThelper(node->left, min, node->value) 
+    && isBSThelper(node->right, node->value, max)  )
+    {
+        return true;
+    }
+    return false;
+    
+
+}
+
+bool BST::isBST(Node* node)
+{
+    if(node == NULL)
+    {
+        return true;
+    }
+    return isBSThelper(node, INT_MIN, INT_MAX);
+}
+
