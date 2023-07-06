@@ -4,6 +4,7 @@
 #include <stack>
 #include <queue>
 #include <string>
+#include <algorithm>
 
 class Node{
     public:

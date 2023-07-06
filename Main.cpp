@@ -20,6 +20,7 @@ int main() {
    std::cout << "Enter 1 to insert" << std::endl;
    std::cout << "Enter 2 to print" << std::endl;
    std::cout << "Enter 3 to see if a specific value is in the tree already" << std::endl;
+   std::cout << "Enter 4 to find the height of the Binary Search Tree" << std::endl;
    std::cout << "Enter 0 to quit" << std::endl;
 
     std::cin >> option;
@@ -34,8 +35,8 @@ int main() {
 	      std::cout <<"Enter VALUE of TREE NODE to INSERT in BST: ";
 	     std::cin >> val;
 	      new_node->value = val;
-	      obj.root= obj.insertRecursive(obj.root,new_node);
-	      //obj.insertNode(new_node);
+	      //obj.root= obj.insertRecursive(obj.root,new_node);
+	     obj.insert(new_node);
 	     std::cout<<std::endl;
          std::cout<<std::endl;
     		break;
@@ -90,6 +91,10 @@ int main() {
 
     
     break;
+
+    case 4: 
+    std::cout << "Finding Height...." << std::endl;
+    std::cout << "The height of the tree is " << obj.FindHeight(obj.root) << std::endl;
     }
     
 

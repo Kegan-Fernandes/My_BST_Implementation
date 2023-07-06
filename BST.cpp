@@ -16,14 +16,14 @@ void BST::insert(Node* nodeTOadd)
             while(temp!= NULL)
             {
                 //check the case that the value is a duplicate. 
-                if(root->value == temp->value)
+                if(temp->value == nodeTOadd->value)
                 {
                     std::cout << "This tree does not allow any duplicates, please enter a differnet value when prompted to do so" << std::endl;
                     return;
                 }
-                if((nodeTOadd->value < root->value )&& (root->left == NULL))
+                if((nodeTOadd->value < temp->value )&& (temp->left == NULL))
                 {
-                    root->left = nodeTOadd;
+                    temp->left = nodeTOadd;
                     std::cout << "The node has been added!" << std::endl;
                     break;
                 }
@@ -31,13 +31,13 @@ void BST::insert(Node* nodeTOadd)
                 {
                     temp = temp->left;
                 }
-                else if((nodeTOadd->value > root->value )&& (root->right == NULL))
+                else if((nodeTOadd->value > temp->value )&& (temp->right == NULL))
                 {
-                    root->right = nodeTOadd;
+                    temp->right = nodeTOadd;
                     std::cout << "The node has been added!" << std::endl;
                     break;
                 }
-                else if(nodeTOadd->value > root->value)
+                else if(nodeTOadd->value > temp->value)
                 {
                     temp = temp->right;
                 }
@@ -284,4 +284,16 @@ bool BST::searchIterative(Node* node, int x)
         }
     }
     return false;
+}
+
+int BST::FindHeight(Node* node)
+{
+    if (node == NULL)
+    {
+        return -1;
+    }
+    int Lheight = FindHeight(node->left);
+    int Rheight = FindHeight(node->right);
+
+    return (std::max(Lheight, Rheight) + 1);
 }

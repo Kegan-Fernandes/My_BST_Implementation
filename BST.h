@@ -48,6 +48,15 @@ bool searchRecursively(Node* node, const int& x);
 
 bool searchIterative(Node* node, int x);
 
+
+// Function to find the height of a binary or binary search tree. In my implementation, the height 
+// of a tree is the most number of edges between the root node and its furthest leaf node
+//returns an int value 
+
+int FindHeight(Node* node);
+
+
+
 };
 
 #endif
