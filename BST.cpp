@@ -359,3 +359,64 @@ bool BST::isBST(Node* node)
     return isBSThelper(node, INT_MIN, INT_MAX);
 }
 
+
+Node* BST::minNode(Node* node)
+{
+   Node* temp = node;
+   while (temp->left != NULL)
+   {
+     temp = temp->left;
+   }
+   return temp;
+}
+/*
+case 1: node to be delted has no children
+case 2: node to be delted has one children
+case 3: node to be deleted has two children
+*/
+Node* BST::deleteNode(Node* node, int v)
+{
+    if(node == NULL)
+    {
+        std::cout << "The tree does not have any nodes to be deleted" << std::endl;
+        return node;
+    }
+    else if(v < node->value)
+    {
+        node->left = deleteNode(node->left, v);
+    }
+    else if(v > node->value)
+    {
+        node->right = deleteNode(node->right, v);
+    }
+    else
+    {
+        if(node->left == NULL && node->right == NULL)
+        {
+            delete node;
+            node = NULL;
+        }
+        else if(node->left == NULL)
+        {
+            Node* temp = node;
+            node = node->right;
+            delete temp;
+
+        }
+        else if(node->right == NULL)
+        {
+            Node* temp = node;
+            node = node->left;
+            delete temp;
+
+
+        }
+        else
+        {
+            Node* temp = minNode(node->right);
+            node->value = temp->value;
+            node->right = deleteNode(node->right, temp->value);
+        }
+    }
+    return node;
+}

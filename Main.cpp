@@ -4,7 +4,7 @@
 #include <queue>
 #include <string> 
 /*TO DO:
-CHECK IF IT IS A BINARY SEARCH TREE
+Add a delete node function 
 */
 
 
@@ -12,6 +12,7 @@ CHECK IF IT IS A BINARY SEARCH TREE
 int main() {
   BST obj;
   int option, val;
+  int num;
   bool srch = false;
 
   do {
@@ -21,6 +22,7 @@ int main() {
    std::cout << "Enter 4 to find the height of the Binary Search Tree" << std::endl;
    std::cout << "Enter 5 to check if the Binary Search Tree is balanced " << std::endl;
    std::cout << "Enter 6 to chekc if the tree is a valid Binary Search Tree" << std::endl;
+   std::cout << "Enter 7 to delete a node from the Binary Search Tree" << std::endl;
    std::cout << "Enter 0 to quit" << std::endl; 
 
     std::cin >> option;
@@ -113,6 +115,27 @@ int main() {
     }
     else
     std::cout << "It is Valid!" << std::endl;
+    break;
+
+    case 7: 
+    std::cout << "Enter the value of the Node you want to delete: ";
+    std::cin>> num;
+
+    //first search and see if a node with that value exists
+     if(obj.searchIterative(obj.root, num))
+   {
+    obj.root = obj.deleteNode(obj.root, num);
+    std::cout<<std::endl;
+   }
+   else
+   {
+     
+    std::cout << "A Node With the Value: "<< num << " is NOT the Tree and cannot be deleted!" << std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    
+   }
+
 
 
     }

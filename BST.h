@@ -68,6 +68,19 @@ bool isBSThelper(Node* node, int min, int max);
 
 bool isBST(Node* node);
 
+//Function to delete a node from a binary search tree 
+//Need to handle multiple cases and the use of a function that return the min vlaue in a subtree will help
+/*
+case 1: node to be delted has no children
+case 2: node to be delted has one children
+case 3: node to be deleted has two children
+
+*/
+
+Node* minNode(Node* node);
+
+Node* deleteNode(Node* node, int v);
+
 
 };
 
